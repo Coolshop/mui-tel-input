@@ -1,14 +1,14 @@
 import React from 'react'
 import { AsYouType } from 'libphonenumber-js'
-import { MuiTelInputContinent } from '@shared/constants/continents'
-import { COUNTRIES, MuiTelInputCountry } from '@shared/constants/countries'
+import type { MuiTelInputContinent } from '@shared/constants/continents'
+import { COUNTRIES, type MuiTelInputCountry } from '@shared/constants/countries'
 import { matchIsArray } from '@shared/helpers/array'
 import {
   getCallingCodeOfCountry,
   matchContinentsIncludeCountry
 } from '@shared/helpers/country'
 import { removeOccurrence } from '@shared/helpers/string'
-import { MuiTelInputInfo, MuiTelInputReason } from '../../index.types'
+import type { MuiTelInputInfo, MuiTelInputReason } from '../../index.types'
 
 type UsePhoneDigitsParams = {
   value: string
@@ -107,7 +107,7 @@ export default function usePhoneDigits({
     defaultCountry || null
   )
   const asYouTypeRef = React.useRef<AsYouType>(new AsYouType(defaultCountry))
-  const inputRef = React.useRef<HTMLInputElement>(null)
+  const inputRef = React.useRef<HTMLInputElement | null>(null)
   const [previousDefaultCountry, setPreviousDefaultCountry] = React.useState<
     MuiTelInputCountry | undefined
   >(defaultCountry)
@@ -122,7 +122,7 @@ export default function usePhoneDigits({
 
   const [previousValue, setPreviousValue] = React.useState(value)
 
-  const buildOnChangeInfo = (reason: MuiTelInputReason): MuiTelInputInfo => {
+  const buildInputInfo = (reason: MuiTelInputReason): MuiTelInputInfo => {
     return {
       countryCallingCode: asYouTypeRef.current.getCallingCode() || null,
       countryCode: asYouTypeRef.current.getCountry() || null,
@@ -160,7 +160,57 @@ export default function usePhoneDigits({
     inputValue: string,
     country: MuiTelInputCountry
   ): string => {
-    return `+${getCallingCodeOfCountry(country)}${inputValue}`
+    return inputValue.startsWith('+') || inputValue === ''
+      ? inputValue
+      : `+${getCallingCodeOfCountry(country)}${inputValue}`
+  }
+
+  const resetCursorPositionIfNeeded = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    notFormattedValue: string,
+    formattedValue: string
+  ) => {
+    const inputValue = event.target.value
+    const prefix = notFormattedValue.replace(inputValue, '')
+    const formattedInputValue = formattedValue.replace(prefix, '').trimStart()
+    const caretIndex = event.target.selectionStart || 0
+    const inputPartBeforeCaret = inputValue.substring(0, caretIndex)
+    const numbersBeforeCaret = inputPartBeforeCaret.replace(/\D/g, '').length
+
+    // Example of values while typing, if the user types 06 32, then clicks between 3 and 2, and types 1
+    // notFormattedValue: +3306 312
+    // formattedValue: +33 06 31 2
+    // formattedInputValue: 06 31 2
+    // inputValue: 06 312
+    // prefix: +33
+
+    if (
+      // Cursor is at the end of the input
+      caretIndex >= inputValue.length ||
+      // The typed value is the same as the formatted one
+      inputValue === formattedInputValue ||
+      // There is a difference between the input value and the formatted one, this situation is not handled
+      formattedInputValue.replace(/\D/g, '') !== inputValue.replace(/\D/g, '')
+    ) {
+      return
+    }
+
+    let newIndex: number
+    let numbersBeforeNewIndex = 0
+
+    // Find the corresponding index of the caret in the formatted value
+    for (newIndex = 0; newIndex < formattedInputValue.length; newIndex++) {
+      if (
+        formattedInputValue[newIndex].match(/\d/) &&
+        ++numbersBeforeNewIndex >= numbersBeforeCaret
+      ) {
+        break
+      }
+    }
+
+    window.requestAnimationFrame(() => {
+      event.target.setSelectionRange(newIndex + 1, newIndex + 1)
+    })
   }
 
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -174,16 +224,17 @@ export default function usePhoneDigits({
     // formatted : e.g: +33 6 26 92..
     const formattedValue = typeNewValue(inputValue)
     const newCountryCode = asYouTypeRef.current.getCountry()
-    const country = forceCallingCode
-      ? // always the same country, can't change
-        (state.isoCode as MuiTelInputCountry)
-      : newCountryCode || previousCountryRef.current
+    const country =
+      newCountryCode ||
+      (forceCallingCode
+        ? (state.isoCode as MuiTelInputCountry)
+        : previousCountryRef.current)
     // Not formatted : e.g: +336269226..
     const numberValue = asYouTypeRef.current.getNumberValue() || ''
 
     previousCountryRef.current = country
 
-    const phoneInfo = buildOnChangeInfo('input')
+    const phoneInfo = buildInputInfo('input')
 
     // Check if the country is excluded, or not part on onlyCountries, etc..
     if (numberValue && (!country || !matchIsIsoCodeValid(country))) {
@@ -207,6 +258,11 @@ export default function usePhoneDigits({
         isoCode: country,
         inputValue: valueToSet
       })
+
+      if (!disableFormatting) {
+        // By default, if the input value is not the one the user has typed, the cursor will be set at the end
+        resetCursorPositionIfNeeded(event, inputValue, valueToSet)
+      }
     }
   }
 
@@ -243,7 +299,7 @@ export default function usePhoneDigits({
       setPreviousValue(inputValue)
       asYouTypeRef.current.input(inputValue)
       previousCountryRef.current = asYouTypeRef.current.getCountry() || null
-      onChange?.(inputValue, buildOnChangeInfo('country'))
+      onChange?.(inputValue, buildInputInfo('country'))
       setState({
         inputValue,
         isoCode
@@ -283,7 +339,7 @@ export default function usePhoneDigits({
     }
 
     onChange?.(newValue, {
-      ...buildOnChangeInfo('country'),
+      ...buildInputInfo('country'),
       // Some country have the same calling code, so we choose what the user has selected
       countryCode: newCountry
     })
@@ -300,6 +356,7 @@ export default function usePhoneDigits({
     isoCode: state.isoCode,
     onInputChange,
     onCountryChange,
-    inputRef
+    inputRef,
+    buildInputInfo
   }
 }
