@@ -604,13 +604,11 @@ function Be(t) {
 function Nt(t) {
   var n = typeof Map == "function" ? /* @__PURE__ */ new Map() : void 0;
   return Nt = function(r) {
-    if (r === null || !Jn(r))
-      return r;
+    if (r === null || !Jn(r)) return r;
     if (typeof r != "function")
       throw new TypeError("Super expression must either be null or a function");
     if (typeof n < "u") {
-      if (n.has(r))
-        return n.get(r);
+      if (n.has(r)) return n.get(r);
       n.set(r, d);
     }
     function d() {
@@ -628,10 +626,8 @@ function K(t, n, e) {
   }, K.apply(null, arguments);
 }
 function Ge() {
-  if (typeof Reflect > "u" || !Reflect.construct || Reflect.construct.sham)
-    return !1;
-  if (typeof Proxy == "function")
-    return !0;
+  if (typeof Reflect > "u" || !Reflect.construct || Reflect.construct.sham) return !1;
+  if (typeof Proxy == "function") return !0;
   try {
     return Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
     })), !0;
@@ -665,14 +661,10 @@ function jt(t, n) {
   t = t.split("-"), n = n.split("-");
   for (var e = t[0].split("."), r = n[0].split("."), d = 0; d < 3; d++) {
     var i = Number(e[d]), a = Number(r[d]);
-    if (i > a)
-      return 1;
-    if (a > i)
-      return -1;
-    if (!isNaN(i) && isNaN(a))
-      return 1;
-    if (isNaN(i) && !isNaN(a))
-      return -1;
+    if (i > a) return 1;
+    if (a > i) return -1;
+    if (!isNaN(i) && isNaN(a)) return 1;
+    if (isNaN(i) && !isNaN(a)) return -1;
   }
   return t[1] && n[1] ? t[1] > n[1] ? 1 : t[1] < n[1] ? -1 : 0 : !t[1] && n[1] ? 1 : t[1] && !n[1] ? -1 : 0;
 }
@@ -1167,8 +1159,7 @@ function Ir(t) {
 }
 function xr(t, n) {
   var e = typeof Symbol < "u" && t[Symbol.iterator] || t["@@iterator"];
-  if (e)
-    return (e = e.call(t)).next.bind(e);
+  if (e) return (e = e.call(t)).next.bind(e);
   if (Array.isArray(t) || (e = Sr(t)) || n) {
     e && (t = e);
     var r = 0;
@@ -1181,13 +1172,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 }
 function Sr(t, n) {
   if (t) {
-    if (typeof t == "string")
-      return Zt(t, n);
+    if (typeof t == "string") return Zt(t, n);
     var e = Object.prototype.toString.call(t).slice(8, -1);
-    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set")
-      return Array.from(t);
-    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e))
-      return Zt(t, n);
+    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set") return Array.from(t);
+    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e)) return Zt(t, n);
   }
 }
 function Zt(t, n) {
@@ -1280,8 +1268,7 @@ function et(t) {
 }
 function Er(t, n) {
   var e = typeof Symbol < "u" && t[Symbol.iterator] || t["@@iterator"];
-  if (e)
-    return (e = e.call(t)).next.bind(e);
+  if (e) return (e = e.call(t)).next.bind(e);
   if (Array.isArray(t) || (e = Tr(t)) || n) {
     e && (t = e);
     var r = 0;
@@ -1294,13 +1281,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 }
 function Tr(t, n) {
   if (t) {
-    if (typeof t == "string")
-      return Yt(t, n);
+    if (typeof t == "string") return Yt(t, n);
     var e = Object.prototype.toString.call(t).slice(8, -1);
-    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set")
-      return Array.from(t);
-    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e))
-      return Yt(t, n);
+    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set") return Array.from(t);
+    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e)) return Yt(t, n);
   }
 }
 function Yt(t, n) {
@@ -1366,8 +1350,7 @@ function M(t, n) {
 }
 function Mr(t, n) {
   var e = typeof Symbol < "u" && t[Symbol.iterator] || t["@@iterator"];
-  if (e)
-    return (e = e.call(t)).next.bind(e);
+  if (e) return (e = e.call(t)).next.bind(e);
   if (Array.isArray(t) || (e = Rr(t)) || n) {
     e && (t = e);
     var r = 0;
@@ -1380,13 +1363,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 }
 function Rr(t, n) {
   if (t) {
-    if (typeof t == "string")
-      return Xt(t, n);
+    if (typeof t == "string") return Xt(t, n);
     var e = Object.prototype.toString.call(t).slice(8, -1);
-    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set")
-      return Array.from(t);
-    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e))
-      return Xt(t, n);
+    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set") return Array.from(t);
+    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e)) return Xt(t, n);
   }
 }
 function Xt(t, n) {
@@ -1473,8 +1453,7 @@ function Ur(t) {
 }
 function Wr(t, n) {
   var e = typeof Symbol < "u" && t[Symbol.iterator] || t["@@iterator"];
-  if (e)
-    return (e = e.call(t)).next.bind(e);
+  if (e) return (e = e.call(t)).next.bind(e);
   if (Array.isArray(t) || (e = Hr(t)) || n) {
     e && (t = e);
     var r = 0;
@@ -1487,13 +1466,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 }
 function Hr(t, n) {
   if (t) {
-    if (typeof t == "string")
-      return Kt(t, n);
+    if (typeof t == "string") return Kt(t, n);
     var e = Object.prototype.toString.call(t).slice(8, -1);
-    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set")
-      return Array.from(t);
-    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e))
-      return Kt(t, n);
+    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set") return Array.from(t);
+    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e)) return Kt(t, n);
   }
 }
 function Kt(t, n) {
@@ -1538,8 +1514,7 @@ function Zr(t, n, e, r) {
     r.country(t.country);
   } else if (t.countryCallingCode)
     r.selectNumberingPlan(t.countryCallingCode);
-  else
-    return t.phone || "";
+  else return t.phone || "";
   var d = r.countryCallingCode(), i = e.v2 ? t.nationalNumber : t.phone, a;
   switch (n) {
     case "NATIONAL":
@@ -1865,8 +1840,7 @@ function Qe(t, n, e, r) {
 }
 function dd(t, n) {
   var e = typeof Symbol < "u" && t[Symbol.iterator] || t["@@iterator"];
-  if (e)
-    return (e = e.call(t)).next.bind(e);
+  if (e) return (e = e.call(t)).next.bind(e);
   if (Array.isArray(t) || (e = id(t)) || n) {
     e && (t = e);
     var r = 0;
@@ -1879,13 +1853,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 }
 function id(t, n) {
   if (t) {
-    if (typeof t == "string")
-      return ne(t, n);
+    if (typeof t == "string") return ne(t, n);
     var e = Object.prototype.toString.call(t).slice(8, -1);
-    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set")
-      return Array.from(t);
-    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e))
-      return ne(t, n);
+    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set") return Array.from(t);
+    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e)) return ne(t, n);
   }
 }
 function ne(t, n) {
@@ -2042,8 +2013,7 @@ function Ad(t, n, e, r) {
     r.selectNumberingPlan(a);
   else if (o && (n || e))
     r.selectNumberingPlan(n, e), n && (u = n), a = e || _t(n, r.metadata);
-  else
-    return {};
+  else return {};
   if (!o)
     return {
       countryCallingCodeSource: i,
@@ -2124,13 +2094,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 }
 function Fd(t, n) {
   if (t) {
-    if (typeof t == "string")
-      return ue(t, n);
+    if (typeof t == "string") return ue(t, n);
     var e = Object.prototype.toString.call(t).slice(8, -1);
-    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set")
-      return Array.from(t);
-    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e))
-      return ue(t, n);
+    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set") return Array.from(t);
+    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e)) return ue(t, n);
   }
 }
 function ue(t, n) {
@@ -2152,31 +2119,27 @@ function wd(t, n) {
       try {
         !d && e.return != null && e.return();
       } finally {
-        if (i)
-          throw o;
+        if (i) throw o;
       }
     }
     return r;
   }
 }
 function Dd(t) {
-  if (Array.isArray(t))
-    return t;
+  if (Array.isArray(t)) return t;
 }
 function Md(t) {
   var n = Array.prototype.slice.call(t), e = Ed(n, 4), r = e[0], d = e[1], i = e[2], a = e[3], o, u, l;
   if (typeof r == "string")
     o = r;
-  else
-    throw new TypeError("A text for parsing must be a string.");
+  else throw new TypeError("A text for parsing must be a string.");
   if (!d || typeof d == "string")
     a ? (u = i, l = a) : (u = void 0, l = i), d && (u = Sd({
       defaultCountry: d
     }, u));
   else if (L(d))
     i ? (u = d, l = i) : l = d;
-  else
-    throw new Error("Invalid second argument: ".concat(d));
+  else throw new Error("Invalid second argument: ".concat(d));
   return {
     text: o,
     options: u,
@@ -2214,8 +2177,7 @@ function _d(t, n, e) {
   try {
     return xd(t, n, e);
   } catch (r) {
-    if (!(r instanceof w))
-      throw r;
+    if (!(r instanceof w)) throw r;
   }
 }
 function se(t, n) {
@@ -2338,8 +2300,7 @@ var Ud = /* @__PURE__ */ function() {
 }();
 function Wd(t, n) {
   var e = typeof Symbol < "u" && t[Symbol.iterator] || t["@@iterator"];
-  if (e)
-    return (e = e.call(t)).next.bind(e);
+  if (e) return (e = e.call(t)).next.bind(e);
   if (Array.isArray(t) || (e = Hd(t)) || n) {
     e && (t = e);
     var r = 0;
@@ -2352,13 +2313,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 }
 function Hd(t, n) {
   if (t) {
-    if (typeof t == "string")
-      return ce(t, n);
+    if (typeof t == "string") return ce(t, n);
     var e = Object.prototype.toString.call(t).slice(8, -1);
-    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set")
-      return Array.from(t);
-    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e))
-      return ce(t, n);
+    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set") return Array.from(t);
+    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e)) return ce(t, n);
   }
 }
 function ce(t, n) {
@@ -2574,8 +2532,7 @@ function yt(t) {
 }
 function me(t, n) {
   var e = typeof Symbol < "u" && t[Symbol.iterator] || t["@@iterator"];
-  if (e)
-    return (e = e.call(t)).next.bind(e);
+  if (e) return (e = e.call(t)).next.bind(e);
   if (Array.isArray(t) || (e = di(t)) || n) {
     e && (t = e);
     var r = 0;
@@ -2588,13 +2545,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 }
 function di(t, n) {
   if (t) {
-    if (typeof t == "string")
-      return ye(t, n);
+    if (typeof t == "string") return ye(t, n);
     var e = Object.prototype.toString.call(t).slice(8, -1);
-    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set")
-      return Array.from(t);
-    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e))
-      return ye(t, n);
+    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set") return Array.from(t);
+    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e)) return ye(t, n);
   }
 }
 function ye(t, n) {
@@ -2672,8 +2626,7 @@ function Et(t, n, e) {
           throw new Error(`Unsupported match result:
 `.concat(JSON.stringify(o, null, 2)));
         }
-      } else
-        return;
+      } else return;
       i++;
     }
     return e ? {
@@ -2727,8 +2680,7 @@ function Et(t, n, e) {
 }
 function pe(t, n) {
   var e = typeof Symbol < "u" && t[Symbol.iterator] || t["@@iterator"];
-  if (e)
-    return (e = e.call(t)).next.bind(e);
+  if (e) return (e = e.call(t)).next.bind(e);
   if (Array.isArray(t) || (e = li(t)) || n) {
     e && (t = e);
     var r = 0;
@@ -2741,13 +2693,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 }
 function li(t, n) {
   if (t) {
-    if (typeof t == "string")
-      return ve(t, n);
+    if (typeof t == "string") return ve(t, n);
     var e = Object.prototype.toString.call(t).slice(8, -1);
-    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set")
-      return Array.from(t);
-    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e))
-      return ve(t, n);
+    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set") return Array.from(t);
+    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e)) return ve(t, n);
   }
 }
 function ve(t, n) {
@@ -2873,8 +2822,7 @@ var Tt = "9", ci = 15, hi = Q(Tt, ci), gi = /[- ]/, mi = function() {
         }), "continue") : "continue";
       }, i = pe(this.matchingFormats.slice()), a; !(a = i()).done; ) {
         var o = d();
-        if (o === "break")
-          break;
+        if (o === "break") break;
       }
       return this.chosenFormat || this.resetFormat(), this.chosenFormat;
     }
@@ -2975,13 +2923,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 }
 function Ni(t, n) {
   if (t) {
-    if (typeof t == "string")
-      return Ne(t, n);
+    if (typeof t == "string") return Ne(t, n);
     var e = Object.prototype.toString.call(t).slice(8, -1);
-    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set")
-      return Array.from(t);
-    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e))
-      return Ne(t, n);
+    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set") return Array.from(t);
+    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e)) return Ne(t, n);
   }
 }
 function Ne(t, n) {
@@ -3003,16 +2948,14 @@ function bi(t, n) {
       try {
         !d && e.return != null && e.return();
       } finally {
-        if (i)
-          throw o;
+        if (i) throw o;
       }
     }
     return r;
   }
 }
 function Pi(t) {
-  if (Array.isArray(t))
-    return t;
+  if (Array.isArray(t)) return t;
 }
 function Ai(t, n) {
   if (!(t instanceof n))
@@ -3216,13 +3159,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 }
 function ki(t, n) {
   if (t) {
-    if (typeof t == "string")
-      return be(t, n);
+    if (typeof t == "string") return be(t, n);
     var e = Object.prototype.toString.call(t).slice(8, -1);
-    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set")
-      return Array.from(t);
-    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e))
-      return be(t, n);
+    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set") return Array.from(t);
+    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e)) return be(t, n);
   }
 }
 function be(t, n) {
@@ -3244,16 +3184,14 @@ function Bi(t, n) {
       try {
         !d && e.return != null && e.return();
       } finally {
-        if (i)
-          throw o;
+        if (i) throw o;
       }
     }
     return r;
   }
 }
 function Gi(t) {
-  if (Array.isArray(t))
-    return t;
+  if (Array.isArray(t)) return t;
 }
 function ji(t, n) {
   if (!(t instanceof n))
@@ -3567,13 +3505,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 }
 function Yi(t, n) {
   if (t) {
-    if (typeof t == "string")
-      return Pe(t, n);
+    if (typeof t == "string") return Pe(t, n);
     var e = Object.prototype.toString.call(t).slice(8, -1);
-    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set")
-      return Array.from(t);
-    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e))
-      return Pe(t, n);
+    if (e === "Object" && t.constructor && (e = t.constructor.name), e === "Map" || e === "Set") return Array.from(t);
+    if (e === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e)) return Pe(t, n);
   }
 }
 function Pe(t, n) {
@@ -3595,16 +3530,14 @@ function zi(t, n) {
       try {
         !d && e.return != null && e.return();
       } finally {
-        if (i)
-          throw o;
+        if (i) throw o;
       }
     }
     return r;
   }
 }
 function Xi(t) {
-  if (Array.isArray(t))
-    return t;
+  if (Array.isArray(t)) return t;
 }
 function Ki() {
   var t = Qi(arguments), n = t.input, e = t.options, r = t.metadata;
@@ -3619,8 +3552,7 @@ function Qi(t) {
     }, l) : o = {});
   else if (L(r))
     o = r, i ? (u = d, l = i) : l = d;
-  else
-    throw new TypeError("A phone number must either be a string or an object of shape { phone, [country] }.");
+  else throw new TypeError("A phone number must either be a string or an object of shape { phone, [country] }.");
   return {
     input: o,
     options: u,
